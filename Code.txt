@@ -1,0 +1,392 @@
+Sub copyPaste()
+'
+' copyPaste Macro
+'
+
+'
+    ActiveSheet.Paste
+    Selection.Columns.AutoFit
+End Sub
+Sub importFromTextFile()
+'
+' importFromTextFile Macro
+'
+
+'
+    Sheets.Add After:=ActiveSheet
+    With ActiveSheet.QueryTables.Add(Connection:= _
+        "TEXT;D:\ONLINE\Fiverr\0004-USA-sagancompass\Sample data - Copy.txt", _
+        Destination:=Range("$A$1"))
+'        .CommandType = 0
+        .Name = "Sample data - Copy"
+        .FieldNames = True
+        .RowNumbers = False
+        .FillAdjacentFormulas = False
+        .PreserveFormatting = True
+        .RefreshOnFileOpen = False
+        .RefreshStyle = xlInsertDeleteCells
+        .SavePassword = False
+        .SaveData = True
+        .AdjustColumnWidth = True
+        .RefreshPeriod = 0
+        .TextFilePromptOnRefresh = False
+        .TextFilePlatform = 437
+        .TextFileStartRow = 1
+        .TextFileParseType = xlDelimited
+        .TextFileTextQualifier = xlTextQualifierDoubleQuote
+        .TextFileConsecutiveDelimiter = False
+        .TextFileTabDelimiter = True
+        .TextFileSemicolonDelimiter = False
+        .TextFileCommaDelimiter = False
+        .TextFileSpaceDelimiter = False
+        .TextFileColumnDataTypes = Array(1, 1, 1, 1, 1, 1)
+        .TextFileTrailingMinusNumbers = True
+        .Refresh BackgroundQuery:=False
+    End With
+End Sub
+Sub sortData()
+'
+' sortData Macro
+'
+
+'
+    Cells.Select
+    Range("K1134").Activate
+    ActiveWorkbook.Worksheets("Sheet5").Sort.SortFields.Clear
+    ActiveWorkbook.Worksheets("Sheet5").Sort.SortFields.Add Key:=Range("A1:A1149" _
+        ), SortOn:=xlSortOnValues, Order:=xlAscending, DataOption:=xlSortNormal
+    With ActiveWorkbook.Worksheets("Sheet5").Sort
+        .SetRange Range("A1:F1149")
+        .Header = xlGuess
+        .MatchCase = False
+        .Orientation = xlTopToBottom
+        .SortMethod = xlPinYin
+        .Apply
+    End With
+    Range("A1").Select
+End Sub
+Sub formatData()
+'
+' formatData Macro
+'
+
+'
+    Range(Selection, Selection.End(xlToRight)).Select
+    Selection.Font.Bold = True
+    Range(Selection, Selection.End(xlDown)).Select
+    Selection.Borders(xlDiagonalDown).LineStyle = xlNone
+    Selection.Borders(xlDiagonalUp).LineStyle = xlNone
+    With Selection.Borders(xlEdgeLeft)
+        .LineStyle = xlContinuous
+        .ColorIndex = 0
+        .TintAndShade = 0
+        .Weight = xlThin
+    End With
+    With Selection.Borders(xlEdgeTop)
+        .LineStyle = xlContinuous
+        .ColorIndex = 0
+        .TintAndShade = 0
+        .Weight = xlThin
+    End With
+    With Selection.Borders(xlEdgeBottom)
+        .LineStyle = xlContinuous
+        .ColorIndex = 0
+        .TintAndShade = 0
+        .Weight = xlThin
+    End With
+    With Selection.Borders(xlEdgeRight)
+        .LineStyle = xlContinuous
+        .ColorIndex = 0
+        .TintAndShade = 0
+        .Weight = xlThin
+    End With
+    With Selection.Borders(xlInsideVertical)
+        .LineStyle = xlContinuous
+        .ColorIndex = 0
+        .TintAndShade = 0
+        .Weight = xlThin
+    End With
+    With Selection.Borders(xlInsideHorizontal)
+        .LineStyle = xlContinuous
+        .ColorIndex = 0
+        .TintAndShade = 0
+        .Weight = xlThin
+    End With
+    Selection.Columns.AutoFit
+    Range("A1").Select
+    Range(Selection, Selection.End(xlToRight)).Select
+    With Selection.Interior
+        .Pattern = xlSolid
+        .PatternColorIndex = xlAutomatic
+        .Color = 65535
+        .TintAndShade = 0
+        .PatternTintAndShade = 0
+    End With
+    Range("C6").Select
+    ActiveWorkbook.Save
+End Sub
+Sub copyPasteSortOneID()
+'
+' copyPasteSortOneID Macro
+'
+
+'
+    Range("A1:F1150").Select
+    Selection.Copy
+    Sheets("Sheet8").Select
+    Range("A1").Select
+    ActiveSheet.Paste
+    Selection.Columns.AutoFit
+    Application.CutCopyMode = False
+    ActiveWorkbook.Worksheets("Sheet8").Sort.SortFields.Clear
+    ActiveWorkbook.Worksheets("Sheet8").Sort.SortFields.Add Key:=Range("A2:A1150" _
+        ), SortOn:=xlSortOnValues, Order:=xlAscending, DataOption:=xlSortNormal
+    With ActiveWorkbook.Worksheets("Sheet8").Sort
+        .SetRange Range("A1:F1150")
+        .Header = xlYes
+        .MatchCase = False
+        .Orientation = xlTopToBottom
+        .SortMethod = xlPinYin
+        .Apply
+    End With
+    Selection.AutoFilter
+    ActiveSheet.Range("$A$1:$F$1150").AutoFilter Field:=1, Criteria1:="3"
+    Selection.Copy
+    Sheets("Sheet9").Select
+    Range("A1").Select
+    ActiveSheet.Paste
+    Selection.Columns.AutoFit
+    Range("A1").Select
+    Application.CutCopyMode = False
+    ActiveWorkbook.Save
+    ActiveWorkbook.Save
+    ActiveWorkbook.Save
+    Range("A1").Select
+    ActiveWorkbook.Save
+    Sheets("Sheet8").Select
+    Range("A1").Select
+    Selection.AutoFilter
+    Range("G2").Select
+    Sheets("Sheet9").Select
+    Range("I7").Select
+End Sub
+Sub sortDataByData()
+'
+' sortDataByData Macro
+'
+
+'
+    Range("A1:F47").Select
+    ActiveWorkbook.Worksheets("Sheet9").Sort.SortFields.Clear
+    ActiveWorkbook.Worksheets("Sheet9").Sort.SortFields.Add Key:=Range("B2:B47") _
+        , SortOn:=xlSortOnValues, Order:=xlAscending, DataOption:=xlSortNormal
+    With ActiveWorkbook.Worksheets("Sheet9").Sort
+        .SetRange Range("A1:F47")
+        .Header = xlYes
+        .MatchCase = False
+        .Orientation = xlTopToBottom
+        .SortMethod = xlPinYin
+        .Apply
+    End With
+    Range("A1").Select
+End Sub
+Sub dayMonthYearInOut()
+'
+' dayMonthYearInOut Macro
+'
+
+'
+    Range("F1").Select
+    Selection.Copy
+    Range("G1:K1").Select
+    ActiveSheet.Paste
+    Application.CutCopyMode = False
+    Selection.clearContents
+    Range("G1").Select
+    ActiveCell.FormulaR1C1 = "DAY"
+    Range("H1").Select
+    ActiveCell.FormulaR1C1 = "MONTH"
+    Range("I1").Select
+    ActiveCell.FormulaR1C1 = "YEAR"
+    Range("J1").Select
+    ActiveCell.FormulaR1C1 = "IN"
+    Range("K1").Select
+    ActiveCell.FormulaR1C1 = "OUT"
+    Range("G2").Select
+End Sub
+Sub dayMonthYearFormula()
+'
+' dayMonthYearFormula Macro
+'
+
+'
+    ActiveCell.FormulaR1C1 = "=DAY(RC[-5])"
+    Range("H2").Select
+    ActiveCell.FormulaR1C1 = "=MONTH(RC[-6])"
+    Range("I2").Select
+    ActiveCell.FormulaR1C1 = "=YEAR(RC[-7])"
+    Range("J2").Select
+End Sub
+
+Sub hourFormula()
+'
+' hourFormula Macro
+'
+
+'
+    Range("H4").Select
+    ActiveCell.FormulaR1C1 = "=TEXT(R[1]C[-6]-RC[-6],""h:mm"")"
+    Range("H4:H12").Select
+    Selection.FillDown
+    Range("H5").Select
+End Sub
+Sub fillColor()
+'
+' fillColor Macro
+'
+
+'
+    With Selection.Interior
+        .Pattern = xlSolid
+        .PatternColorIndex = xlAutomatic
+        .Color = 255
+        .TintAndShade = 0
+        .PatternTintAndShade = 0
+    End With
+End Sub
+
+
+Sub startProgram()
+    
+    Application.ScreenUpdating = False
+    Application.Calculation = xlAutomatic
+    
+    
+''----------
+    
+        Sheets("Data").Select
+        Range("I2:I10000").Select
+        Selection.Copy
+        Range("H2").Select
+        
+        ActiveSheet.Paste
+        Application.CutCopyMode = False
+        Range("A1").Select
+
+    Range("A1:I10000").Select
+    Selection.Copy
+    Sheets("Formulae").Select
+    Range("A1").Select
+    ActiveSheet.Paste
+    Application.CutCopyMode = False
+    Range("A1").Select
+    
+    
+    'Sheets("Formulae").Select
+    Range("A1:F10000").Select
+    ActiveWorkbook.Worksheets("Formulae").Sort.SortFields.Clear
+    ActiveWorkbook.Worksheets("Formulae").Sort.SortFields.Add Key:=Range( _
+        "A2:A10000"), SortOn:=xlSortOnValues, Order:=xlAscending, DataOption:= _
+        xlSortNormal
+    With ActiveWorkbook.Worksheets("Formulae").Sort
+        .SetRange Range("A1:F10000")
+        .Header = xlYes
+        .MatchCase = False
+        .Orientation = xlTopToBottom
+        .SortMethod = xlPinYin
+        .Apply
+    End With
+   
+    
+    
+''----------
+    
+    'Sheets("Formulae").Select
+    'lastRow = Worksheets(FoundSheetName).Cells(Rows.Count, 3).End(xlUp).Row
+   
+    Range("A1048570").Select
+    Selection.End(xlUp).Select
+    lastRow = ActiveCell.Row
+    Range("A1").Select
+    For i = 2 To lastRow
+        If (Range("A" & i).Value = Range("A" & i + 1).Value) And (Range("K" & i).Value = Range("K" & i + 1).Value) Then
+            Range("H" & i).Select
+            ActiveCell.FormulaR1C1 = "=TEXT(R[1]C[-6]-RC[-6],""h:mm"")"
+            'Time = Range("B" & i + 1).Value - Range("B" & i).Value
+            'ActiveCell.FormulaR1C1 = "=TEXT(Time,""h:mm"")"
+            'Range("H" & i).Interior.Color = 0
+            'Range("H" & i).Interior.Pattern = xlNone
+        Else
+            Range("H" & i).Interior.Color = 255
+        End If
+    
+    Next
+    
+        Columns("H:H").Select
+        Selection.Copy
+        Selection.PasteSpecial Paste:=xlPasteValues, Operation:=xlNone, SkipBlanks _
+        :=False, Transpose:=False
+        Application.CutCopyMode = False
+        Range("A1").Select
+  ''----------
+                
+    For i = 2 To lastRow
+        If Range("K" & i).Value = Range("K" & i + 1) Then
+            Range("H" & i + 1).Interior.Color = RGB(100, 200, 20)
+        End If
+    
+    Next
+
+   ''----------
+               
+    Range("H2:H10000").Select
+    Selection.Copy
+    Range("X2").Select
+    Selection.PasteSpecial Paste:=xlPasteValues, Operation:=xlNone, SkipBlanks _
+        :=False, Transpose:=False
+    Selection.Replace What:=":*", Replacement:="", LookAt:=xlPart, _
+        SearchOrder:=xlByRows, MatchCase:=False, SearchFormat:=False, _
+        ReplaceFormat:=False
+    
+    Application.CutCopyMode = False
+    Range("A1").Select
+
+    ''----------
+        ActiveWorkbook.RefreshAll
+        ActiveWorkbook.Save
+        
+        Sheets("Summary").Select
+        Range("A1").Select
+        Application.ScreenUpdating = True
+        Application.Calculation = xlAutomatic
+    ''----------
+    MsgBox ("Conratulation ! Your Task has been done !")
+    
+End Sub
+
+Sub clearContents()
+        
+        Sheets("Data").Select
+        Range("A2:F10000").Select
+        Selection.clearContents
+        Application.CutCopyMode = False
+        Range("A2").Select
+    ''----------
+        
+        Sheets("Formulae").Select
+        Range("A2:F10000").Select
+        Selection.clearContents
+        Application.CutCopyMode = False
+        Range("A2").Select
+    ''----------
+        ActiveWorkbook.RefreshAll
+        ActiveWorkbook.Save
+        
+        Sheets("Summary").Select
+        Range("A1").Select
+        Application.ScreenUpdating = True
+        Application.Calculation = xlAutomatic
+        
+    MsgBox ("Old Data Deleted Successfuly ! You can insert new Data !")
+        
+End Sub
