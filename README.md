@@ -1,2 +1,21 @@
 # 009-Excel-VBA-Macros-Automation-US--Sagan-Compass-Date-Based-Automation-and-Input-Driven-Report
 Developed an automated reporting tool for the **Sagan Compass system**, designed to calculation
+
+### **Project Title:**
+
+**Sagan Compass – Date-Based Automation and Input-Driven Report Calculation**
+
+### **Description:**
+
+Developed an automated reporting tool for the **Sagan Compass system**, designed to:
+
+* Perform specific **tasks and calculations** based on user inputs and selected dates
+* Automatically filter and process data depending on the given date range or criteria
+* Generate dynamic reports and KPIs relevant to the selected inputs
+* Use Excel formulas and VBA to enhance calculation accuracy and minimize manual steps
+* Enable users to update inputs easily and receive **real-time insights** from the report output
+* Ensure data integrity through **validation rules and conditional logic**
+
+**Objective:**
+To simplify report generation and ensure timely, accurate results based on user-defined parameters like date and input fields.
+
